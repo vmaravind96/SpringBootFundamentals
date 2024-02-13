@@ -16,13 +16,9 @@ public class StudentService {
     private BaseDAO<Student> studentDAO;
 
     public StudentService() {
-
-    }
-
-    public StudentService(String name) {
         int stop = 0;
-//        studentDAO = new InMemoryStudentDAO();
     }
+
 
     public Student createStudent(String name, String phoneNumber, Status status) {
         Student student = new Student(name, phoneNumber, status);
