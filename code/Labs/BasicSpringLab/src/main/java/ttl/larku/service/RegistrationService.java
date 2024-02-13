@@ -11,19 +11,30 @@ import java.util.List;
 @Service
 public class RegistrationService {
 
-    @Autowired
+    /*
+    The below autowired variables will be assigned only after constructor initialization is done
+    Flow is: Constructor of the class -> auto wired initialization
+    */
+
+    // Gives Field Injection not recommended warning
+    // @Autowired
     private CourseService courseService;
 
-    @Autowired
+    // @Autowired
     private StudentService studentService;
 
-    @Autowired
+    // @Autowired
     private ClassService classService;
 
-    public RegistrationService() {
-        // courseService = new CourseService();
-        // studentService = new StudentService();
-        // classService = new ClassService();
+    public RegistrationService(CourseService courseService, StudentService studentService, ClassService classService) {
+        /*
+        courseService = new CourseService();
+        studentService = new StudentService();
+        classService = new ClassService();
+         */
+        this.courseService = courseService;
+        this.studentService = studentService;
+        this.classService = classService;
     }
 
 

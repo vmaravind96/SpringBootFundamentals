@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class CourseService {
 
-    @Autowired
+    // @Autowired
     private BaseDAO<Course> courseDAO;
+
+    CourseService(BaseDAO<Course> courseDAO){
+        this.courseDAO = courseDAO;
+    }
 
     public Course createCourse(String code, String title) {
         Course course = new Course(code, title);

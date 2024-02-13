@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    @Autowired
+    // @Autowired
     private BaseDAO<Student> studentDAO;
+
+    StudentService(BaseDAO<Student> studentDAO) {
+        this.studentDAO = studentDAO;
+    }
 
     public Student createStudent(String name) {
         Student student = new Student(name);
