@@ -2,25 +2,39 @@ package ttl.larku.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ttl.larku.domain.Student;
 import ttl.larku.domain.Student.Status;
+import ttl.larku.jconfig.LarkUConfig;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {LarkUConfig.class})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class StudentServiceTest {
-
+    /*
+    Context is shared across all tests with just @ContextConfiguration.
+    So we use @DirtiesContext annotation
+    */
     private String name1 = "Bloke";
     private String name2 = "Blokess";
     private String newName = "Karl Jung";
     private String phoneNumber1 = "290 298 4790";
     private String phoneNumber2 = "3838 939 93939";
 
+    @Autowired
     private StudentService studentService;
 
     @BeforeEach
     public void setup() {
-        studentService = new StudentService();
+        // This is a bad practice (usage of 'new' keyword)
+        // studentService = new StudentService();
     }
 
     @Test
