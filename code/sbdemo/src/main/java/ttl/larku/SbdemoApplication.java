@@ -35,3 +35,18 @@ class MyRunner implements CommandLineRunner
 		students.forEach(System.out::println);
 	}
 }
+
+//@Component
+//class YourRunner implements CommandLineRunner
+//{
+//	@Autowired
+//	private TrackService tracService;
+//
+//	@Override
+//	public void run(String... args) throws Exception {
+//		System.out.println("MyRunner says hello");
+//		List<Student> students = tracService.getTracks();
+//		System.out.println("students: " + students.size());
+//		students.forEach(System.out::println);
+//	}
+//}
