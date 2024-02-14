@@ -17,4 +17,11 @@ public class SomeController {
         System.out.println("students: ");
         students.forEach(System.out::println);
     }
+
+    @Override
+    public String toString() {
+        return "SomeController{" +
+                "studentService=" + studentService +
+                '}';
+    }
 }
