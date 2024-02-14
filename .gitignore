@@ -52,3 +52,5 @@ hs_*
 ### VS Code ###
 .vscode/
 
+ .intuitgithookrc
+

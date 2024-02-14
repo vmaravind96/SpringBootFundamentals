@@ -3,6 +3,7 @@ package ttl.larku.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -43,11 +44,21 @@ public class RegistrationServiceTest {
 
     //TODO - Dependency Injection using annotations.
     //Look at other tests if you need an example
+    @Autowired
     private RegistrationService regService;
+
+    @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private ClassService classService;
+
+    @Autowired
+    private CourseService courseService;
 
     //TODO - Dependency Injection using annotations.
     //Look at other tests if you need an example
-    private ApplicationContext appContext;
+    // private ApplicationContext appContext;
 
     @BeforeEach
     public void setup() {
@@ -59,9 +70,9 @@ public class RegistrationServiceTest {
         class1 = new ScheduledClass(course1, startDate1, endDate1);
         class2 = new ScheduledClass(course2, startDate2, endDate2);
 
-        ClassService classService = appContext.getBean("classService", ClassService.class);
-        CourseService courseService = appContext.getBean("courseService", CourseService.class);
-        StudentService studentService = appContext.getBean("studentService", StudentService.class);
+        //  ClassService classService = appContext.getBean("classService", ClassService.class);
+        //  CourseService courseService = appContext.getBean("courseService", CourseService.class);
+        //  StudentService studentService = appContext.getBean("studentService", StudentService.class);
 
         //Empty out our databases
         studentService.clear();
