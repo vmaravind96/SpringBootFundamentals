@@ -1,10 +1,10 @@
 package ttl.larku.domain;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-//import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-//import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ public class Student {
 
     private String phoneNumber;
 
-//    @JsonDeserialize(using = LocalDateDeserializer.class)
-//    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dob;
 
     private Status status = Status.FULL_TIME;
@@ -78,7 +78,7 @@ public class Student {
         this.name = name;
     }
 
-//    @JsonIgnore
+    @JsonIgnore
     public Status[] getStatusList() {
         return Status.values();
     }
