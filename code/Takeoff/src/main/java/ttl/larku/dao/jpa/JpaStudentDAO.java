@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class JpaStudentDAO implements StudentDAO {
 
-    private Map<Integer, Student> students = new HashMap<Integer, Student>();
+    private Map<Integer, Student> students = new ConcurrentHashMap<>();
     private static AtomicInteger nextId = new AtomicInteger(0);
 
     public boolean update(Student updateObject) {

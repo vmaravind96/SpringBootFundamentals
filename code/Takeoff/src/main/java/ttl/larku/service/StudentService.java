@@ -13,17 +13,13 @@ import java.util.List;
 public class StudentService {
 
     List<String> stuff = new ArrayList<>();
-//    ArrayList<String> stuff = new ArrayList<>();
 
     private StudentDAO studentDAO;
-//    private InMemoryStudentDAO studentDAO;
-//    private JpaStudentDAO studentDAO;
+    // Jakarta(Java) Persistence API - JPA
+    // private InMemoryStudentDAO studentDAO;
+    // Note: Always use Interface type instead of implementation type
 
-    public StudentService() {
-//        studentDAO = DAOFactory.studentDAO();
-//        studentDAO = new InMemoryStudentDAO();
-//        studentDAO = new JpaStudentDAO();
-    }
+    public StudentService() {}
 
     public Student createStudent(String name, String phoneNumber, Status status) {
         Student student = new Student(name, phoneNumber, status);
@@ -61,13 +57,11 @@ public class StudentService {
         return studentDAO.getAll();
     }
 
-    //    public InMemoryStudentDAO getStudentDAO() {
-//    public JpaStudentDAO getStudentDAO() {
     public StudentDAO getStudentDAO() {
         return studentDAO;
     }
 
-    public void setStudentDAO(StudentDAO studentDAO) {
+    public void setStudentDAO(StudentDAO studentDAO){
         this.studentDAO = studentDAO;
     }
 

@@ -13,22 +13,19 @@ public class RegistrationApp {
 
     int value;
 
-    StudentService ss = DAOFactory.studentService();
-
-    StudentDAO sd = DAOFactory.studentDAO();
+    StudentService ss = DAOFactory.getStudentService();
+    StudentDAO dao = DAOFactory.getStudentDAO();
 
     public static void main(String[] args) {
         RegistrationApp ra = new RegistrationApp();
         //ra.primeAndPrintBoth();
         ra.postRequestToAddAStudent();
-
         ra.getRequestForAllStudents();
     }
 
 
     public void postRequestToAddAStudent() {
         ss.createStudent("New One", "282 484 9944", Student.Status.FULL_TIME);
-
         List<Student> students = ss.getAllStudents();
         students.forEach(System.out::println);
     }

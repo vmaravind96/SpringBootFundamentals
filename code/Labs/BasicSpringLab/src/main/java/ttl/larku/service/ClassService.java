@@ -10,6 +10,7 @@ import ttl.larku.domain.ScheduledClass;
 public class ClassService {
 
     private CourseService courseService;
+
     private BaseDAO<ScheduledClass> classDAO;
 
 

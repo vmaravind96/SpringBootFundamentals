@@ -10,16 +10,13 @@ import org.springframework.stereotype.Repository;
 import ttl.larku.dao.BaseDAO;
 import ttl.larku.domain.Course;
 
-//@Component
 @Repository
 public class InMemoryCourseDAO implements BaseDAO<Course> {
 
     private Map<Integer, Course> courses = new HashMap<Integer, Course>();
     private static int nextId = 0;
 
-    public InMemoryCourseDAO() {
-        int stop = 1;
-    }
+    public InMemoryCourseDAO(){}
 
     public void update(Course updateObject) {
         if (courses.containsKey(updateObject.getId())) {

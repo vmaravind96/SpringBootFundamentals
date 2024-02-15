@@ -1,23 +1,40 @@
 package ttl.larku.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ttl.larku.domain.ScheduledClass;
 import ttl.larku.domain.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO - Need to make this into a bean
+@Service
 public class RegistrationService {
 
-    //TODO - something required here
+    /*
+    The below autowired variables will be assigned only after constructor initialization is done
+    Flow is: Constructor of the class -> auto wired initialization
+    */
+
+    // Gives Field Injection not recommended warning
+    // @Autowired
     private CourseService courseService;
+
+    // @Autowired
     private StudentService studentService;
+
+    // @Autowired
     private ClassService classService;
 
-    public RegistrationService() {
+    public RegistrationService(CourseService courseService, StudentService studentService, ClassService classService) {
+        /*
         courseService = new CourseService();
         studentService = new StudentService();
         classService = new ClassService();
+         */
+        this.courseService = courseService;
+        this.studentService = studentService;
+        this.classService = classService;
     }
 
 

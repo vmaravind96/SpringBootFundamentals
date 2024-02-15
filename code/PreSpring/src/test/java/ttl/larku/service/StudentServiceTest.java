@@ -1,7 +1,6 @@
 package ttl.larku.service;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ContextConfiguration(classes = {LarkUConfig.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class StudentServiceTest {
-
+    /*
+    Context is shared across all tests with just @ContextConfiguration.
+    So we use @DirtiesContext annotation
+    */
     private String name1 = "Bloke";
     private String name2 = "Blokess";
     private String newName = "Karl Jung";
@@ -31,7 +33,8 @@ public class StudentServiceTest {
 
     @BeforeEach
     public void setup() {
-//        studentService = new StudentService();
+        // This is a bad practice (usage of 'new' keyword)
+        // studentService = new StudentService();
     }
 
     @Test

@@ -11,34 +11,27 @@ import ttl.larku.service.StudentService;
 
 @Configuration
 @ComponentScan({"ttl.larku"})
+//@PropertySource({"classpath:/larkUContext.properties"})
 public class LarkUConfig {
-
-    /**
-     <bean id="inMemoryStudentDAO" class="ttl.larku.dao.inmemory.InMemoryStudentDAO"/>
+    /*
+        <bean id="inMemoryStudentDAO" class="ttl.larku.dao.inmemory.InMemoryStudentDAO" />
      */
-
     @Bean
     public BaseDAO<Student> studentDAO() {
         var dao = new InMemoryStudentDAO();
         return dao;
     }
 
-
-    /**
-     <bean id="studentService" class="ttl.larku.service.StudentService" >
-     <property name="studentDAO" ref="inMemoryStudentDAO"/>
-     </bean>
-     */
-
+    /*
+        <bean id="studentService" class="ttl.larku.service.StudentService" >
+           <property name="studentDAO" ref="inMemoryStudentDAO"/>
+        </bean>
+    */
     @Bean
     public StudentService studentService() {
         StudentService service = new StudentService();
-
-        BaseDAO<Student> dao = studentDAO();
-
-        service.setStudentDAO(dao);
-
+        BaseDAO<Student> studentDAO = studentDAO();
+        service.setStudentDAO(studentDAO);
         return service;
     }
-
 }
