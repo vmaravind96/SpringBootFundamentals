@@ -24,6 +24,11 @@ public class StudentController {
     @Autowired
     private URICreator uriCreator;
 
+    @GetMapping("/boo/hoo")
+    public String getBoHoo() {
+        return "boo hoo";
+    }
+
     @GetMapping
     public List<Student> getAllStudents() {
         List<Student> students = studentService.getAllStudents();
