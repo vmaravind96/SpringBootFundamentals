@@ -1,14 +1,21 @@
 package ttl.larku.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ttl.larku.domain.Student;
 import ttl.larku.service.StudentService;
 
 import java.net.URI;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * @author whynot
@@ -44,8 +51,11 @@ public class StudentController {
         return ResponseEntity.ok(s);
     }
 
+    @Autowired
+    private Validator validator;
+
     @PostMapping
-    public ResponseEntity<?> createStudent(@RequestBody Student student) {
+    public ResponseEntity<?> createStudent(@RequestBody /*@Valid*/ Student student) {
        Student newStudent = studentService.createStudent(student);
 
        //http://localhost:8080/students/5
@@ -76,4 +86,14 @@ public class StudentController {
         }
         return ResponseEntity.noContent().build();
     }
+
+//    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
+//    public ResponseEntity<?> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, WebRequest request) {
+//        var errors = ex.getFieldErrors();
+//        List<String> errMsgs = errors.stream()
+//                .map(error -> "@Valid error:" + error.getField() + ": " + error.getDefaultMessage()
+//                        + ", supplied Value: " + error.getRejectedValue())
+//                .collect(toList());
+//        return ResponseEntity.badRequest().body(errMsgs);
+//    }
 }

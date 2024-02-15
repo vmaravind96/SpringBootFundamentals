@@ -1,5 +1,7 @@
 package ttl.larku.service.props;
 
+import org.springframework.stereotype.Component;
+
 import java.time.Duration;
 
 public class ServiceThatWeDontOwn {
