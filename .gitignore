@@ -52,5 +52,7 @@ hs_*
 ### VS Code ###
 .vscode/
 
- .intuitgithookrc
+.intuitgithookrc
+*/.DS_Store
+.DS_Store
 
