@@ -71,8 +71,7 @@ public class RestClientSpringTest {
 
     public Student getStudentWithId(int id) throws IOException {
         //This is the Spring REST mechanism to create a paramterized type
-        ParameterizedTypeReference<RestResultWrapper<Student>>
-                ptr = new ParameterizedTypeReference<RestResultWrapper<Student>>() {
+        ParameterizedTypeReference<RestResultWrapper<Student>> ptr = new ParameterizedTypeReference<RestResultWrapper<Student>>() {
         };
 
         ResponseEntity<RestResultWrapper<Student>> response = restClient.get()

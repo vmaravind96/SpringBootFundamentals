@@ -17,6 +17,8 @@
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.15.3</jackson.version>
         <logback.version>1.4.14</logback.version>
+
+        <jakarta-annotation-version>2.1.1</jakarta-annotation-version>
     </properties>
 
     <dependencies>
@@ -118,6 +120,12 @@
             <version>${logback.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api -->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta-annotation-version}</version>
+        </dependency>
 
     </dependencies>
 
