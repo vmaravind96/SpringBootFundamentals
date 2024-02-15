@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,8 +23,10 @@ public class Student {
 
     private int id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String phoneNumber;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
