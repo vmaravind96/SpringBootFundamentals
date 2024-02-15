@@ -1,5 +1,6 @@
 package ttl.larku.service;
 
+import ttl.larku.controller.URICreator;
 import ttl.larku.dao.BaseDAO;
 import ttl.larku.domain.Student;
 
@@ -10,7 +11,8 @@ public class StudentService {
 
     private BaseDAO<Student> studentDAO;
 
-    public StudentService() {
+    public StudentService(BaseDAO<Student> studentDAO) {
+        this.studentDAO = studentDAO;
     }
 
     private CourseService cs;

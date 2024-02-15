@@ -21,6 +21,9 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private URICreator uriCreator;
+
     @GetMapping
     public List<Student> getAllStudents() {
         List<Student> students = studentService.getAllStudents();
@@ -41,11 +44,12 @@ public class StudentController {
        Student newStudent = studentService.createStudent(student);
 
        //http://localhost:8080/students/5
-        URI newResource = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(student.getId())
-                .toUri();
+//        URI newResource = ServletUriComponentsBuilder
+//                .fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(student.getId())
+//                .toUri();
+        URI newResource = uriCreator.createURI(newStudent.getId());
 
        return ResponseEntity.created(newResource).build(); //body(newStudent);
     }

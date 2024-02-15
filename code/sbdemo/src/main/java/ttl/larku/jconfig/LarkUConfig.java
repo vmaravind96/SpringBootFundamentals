@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
+import ttl.larku.controller.URICreator;
 import ttl.larku.dao.BaseDAO;
 import ttl.larku.dao.inmemory.InMemoryCourseDAO;
 import ttl.larku.dao.inmemory.InMemoryStudentDAO;
@@ -36,10 +37,14 @@ public class LarkUConfig {
         return jpaStudentDAO();
     }
 
+//    @Autowired
+//    private URICreator uriCreator;
+
     @Bean
     public StudentService studentService() {
-        StudentService ss = new StudentService();
-        ss.setStudentDAO(studentDAO());
+        StudentService ss =
+                new StudentService(studentDAO());
+//        ss.setStudentDAO(studentDAO());
 
         return ss;
     }
