@@ -1,5 +1,8 @@
 package ttl.larku.dao.jpahibernate;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import ttl.larku.dao.BaseDAO;
 import ttl.larku.domain.Student;
 
@@ -11,8 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class JPAStudentDAO implements BaseDAO<Student> {
 
-    private Map<Integer, Student> students = new ConcurrentHashMap<>();
-    private AtomicInteger nextId = new AtomicInteger(1);
+    @PersistenceContext
+    private EntityManager entityManger;
 
     private String from;
 
@@ -25,43 +28,43 @@ public class JPAStudentDAO implements BaseDAO<Student> {
     }
 
     public boolean update(Student updateObject) {
-        return students.computeIfPresent(updateObject.getId(), (key, oldValue) -> updateObject) != null;
+        entityManger.merge(updateObject);
+        return true;
     }
 
     public boolean delete(Student student) {
-        return students.remove(student.getId()) != null;
+        entityManger.remove(student);
+        return true;
     }
 
     public Student create(Student newObject) {
-        //Create a new Id
-        int newId = nextId.getAndIncrement();
-        newObject.setId(newId);
-
         //Put our Mark
         newObject.setName(from + newObject.getName());
-        students.put(newId, newObject);
+
+        entityManger.persist(newObject);
 
         return newObject;
     }
 
     public Student get(int id) {
-        return students.get(id);
+        return entityManger.find(Student.class, id);
     }
 
     public List<Student> getAll() {
-        return new ArrayList<Student>(students.values());
+        TypedQuery<Student> query = entityManger.createQuery("select s from Student s", Student.class);
+        return query.getResultList();
     }
 
     public void deleteStore() {
-        students = null;
+//        students = null;
     }
 
     public void createStore() {
-        students = new ConcurrentHashMap<>();
-        nextId = new AtomicInteger(1);
+//        students = new ConcurrentHashMap<>();
+//        nextId = new AtomicInteger(1);
     }
 
-    public Map<Integer, Student> getStudents() {
-        return students;
-    }
+//    public Map<Integer, Student> getStudents() {
+//        return students;
+//    }
 }
