@@ -20,4 +20,25 @@ public class StudentRepoTest {
         List<Student> result = studentRepo.findAll();
         assertEquals(4, result.size());
     }
+
+    @Test
+    public void testFindByName() {
+        List<Student> byName = studentRepo.findByName("Manoj-h2");
+        System.out.println("byName: " + byName);
+        assertEquals(1, byName.size());
+    }
+
+    @Test
+    public void testFindByNameContaining() {
+        List<Student> byName = studentRepo.findByNameContaining("Manoj");
+        System.out.println("byName: " + byName);
+        assertEquals(1, byName.size());
+    }
+
+    @Test
+    public void testFindByNameContainingIgnoringCase() {
+        List<Student> byName = studentRepo.findByNameContainingIgnoringCase("manoj");
+        System.out.println("byName: " + byName);
+        assertEquals(1, byName.size());
+    }
 }
