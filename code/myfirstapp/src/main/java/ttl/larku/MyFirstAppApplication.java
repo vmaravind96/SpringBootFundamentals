@@ -42,3 +42,20 @@ class MyRunner implements CommandLineRunner{
 		}
 	}
 }
+
+
+/*
+***********************
+JPA Demo
+***********************
+1. Create META-INF folder and add Manifest.mf and persistence.xml file.
+2. Put the XML config for the corresponding database in the persistence.xml file
+3. Create EntityManagerFactory using this command:
+	* EntityManagerFactory emf = Persistence.createEntityManagerFactory("LarkUPU_SE");
+	* EntityManager em = emf.createEntityManager();
+4. Then refer to the examples in this repo to see how to query and add, update / delete
+5. Note:
+	* Student has to be an entity inorder for this to work.
+	* Transactions are very important
+	* Use and discard entityManager after use.
+ */
