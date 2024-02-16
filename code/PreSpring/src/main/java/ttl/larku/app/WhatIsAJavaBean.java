@@ -1,18 +1,14 @@
 package ttl.larku.app;
 
-/**
- * @author whynot
- */
 public class WhatIsAJavaBean {
+    private int value;
 
-    private int xzy;
-
-    //value
-    public int getValue() {
-        return xzy;
+    // Property with value "value" has get and set methods
+    public int getValue(){
+        return value;
     }
 
-    public void setValue(int value) {
-        this.xzy = value;
+    public void setValue(int val){
+        this.value = val;
     }
 }

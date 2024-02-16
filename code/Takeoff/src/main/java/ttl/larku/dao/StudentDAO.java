@@ -3,10 +3,8 @@ package ttl.larku.dao;
 import ttl.larku.domain.Student;
 
 import java.util.List;
+import java.util.Map;
 
-/**
- * @author whynot
- */
 public interface StudentDAO {
     boolean update(Student updateObject);
 
@@ -17,4 +15,6 @@ public interface StudentDAO {
     Student get(int id);
 
     List<Student> getAll();
+
+    Map<Integer, Student> getStudents();
 }
