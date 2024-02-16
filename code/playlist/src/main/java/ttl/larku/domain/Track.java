@@ -1,8 +1,11 @@
 package ttl.larku.domain;
 
+import jakarta.persistence.*;
+
 import java.time.Duration;
 import java.time.LocalDate;
 
+@Entity
 public class Track {
 	public enum Format
 	{
@@ -11,6 +14,8 @@ public class Track {
 		MP3
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String title;
 	private String artist;
@@ -18,6 +23,7 @@ public class Track {
 	private Duration duration;
 	private LocalDate date;
 
+	@Enumerated(EnumType.STRING)
 	private Format format;
 
 	public Track() {

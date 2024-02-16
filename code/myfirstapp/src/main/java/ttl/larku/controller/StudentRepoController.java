@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ttl.larku.domain.Student;
 import ttl.larku.service.StudentRepoService;
 import ttl.larku.service.StudentService;
@@ -13,14 +12,14 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students")
-public class StudentController {
+@RequestMapping("/studentsrepo")
+public class StudentRepoController {
 
     @Autowired
     private URICreator uriCreator;
 
     @Autowired
-    private StudentService studentService;
+    private StudentRepoService studentService;
 
     @GetMapping
     public List<Student> getAllStudents() {
